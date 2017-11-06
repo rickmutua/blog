@@ -6,5 +6,64 @@
 </head>
 <body>
 
+    {% macro displayBlogList (blog_list) %}
+
+        {% for blog in blog_list %}
+
+            <div class="container">
+
+                <li style="...">
+
+                    <h2>
+                        <a href="{{ url_for('main.single_blog, id = blog.id)}}">
+                            {{ blog.title }}
+                        </a>
+                    </h2>
+
+                    <br>
+
+                    <p> {{ blog.blog }}</p>
+
+                </li>
+
+            </div>
+
+        {% endfor %}
+
+    {% endmacro %}
+
+
+    {% macro displayReviewList(review_list) %}
+
+        {% for review in review_list %}
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-2"></div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
+                        <li>
+
+                            <p> {{review.review}} </p>
+
+                            <p> posted by {{ review.user.username }} </p>
+
+                        </li>
+
+                    </div>
+
+                    <div class="col-md-2"></div>
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    {% endmacro %}
+
 </body>
 </html>
