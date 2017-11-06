@@ -18,9 +18,9 @@ class Blog(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
 
-    title = db.Column(db.String(200))
+    title = db.Column(db.String)
 
-    description = db.Column(db.String(300))
+    description = db.Column(db.String)
 
     blog = db.Column(db.String)
 

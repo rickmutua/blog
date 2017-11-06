@@ -9,6 +9,13 @@ class BlogForm(FlaskForm):
 
     description = StringField('Blog Description', validators=[Required()])
 
-    blog = TextAreaField('Blog', validators=[Required()])
+    blog = TextAreaField('Blog')
+
+    submit = SubmitField('Submit')
+
+
+class ReviewForm(FlaskForm):
+
+    review = TextAreaField('Pitch Review')
 
     submit = SubmitField('Submit')
