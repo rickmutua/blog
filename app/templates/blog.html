@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% block content %}
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                     <h1 style="font-family: 'Roboto Slab', serif;"> PITCH {{pitch.title}} </h1>
+                </div>
+
+                <div class="col-sm-4 col-md-4 col-lg-6"></div>
+
+                <div class="col-sm-4 col-md-4 col-lg-2">
+                    <a class="btn btn-default" href="/pitch/review/new/{{pitch.id}}"> Write a review </a>
+                </div>
+
+            </div>
+
+                <hr>
+
+                <br>
+
+            <div class="row">
+
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                     <h2 style="font-family: 'Roboto Slab', serif;"> {{pitch.title}} </h2>
+                </div>
+
+                <div class="col-sm-4 col-md-4 col-lg-6"></div>
+
+                <div class="col-sm-4 col-md-4 col-lg-2">
+                    <p> posted by <a href="/user/<uname>"> {{pitch.user.username}}</a> </p>
+                </div>
+
+            </div>
+
+            <br>
+
+            <div class="row">
+
+                <div class="col-sm-1 col-md-1 col-lg-1"></div>
+
+                <div class="col-sm-10 col-md-10 col-lg-10">
+
+                    <p> {{pitch.pitch}} </p>
+
+                </div>
+
+                <div class="col-sm-1 col-md-1 col-lg-1"></div>
+
+            </div>
+
+
+                <br> <br>
+
+
+            <hr>
+
+            <h3> Reviews </h3>
+
+
+            <div class="col-sm-1 col-md-1 col-lg-1"></div>
+
+                <div class="col-sm-10 col-md-10 col-lg-10">
+
+                    <ul style="list-style-type: none;">
+
+                        {{ macro.displayReviewList(reviews) }}
+
+                    </ul>
+
+                </div>
+
+                <div class="col-sm-1 col-md-1 col-lg-1"></div>
+
+            </div>
+
+            <hr>
+
+        </div>
+
+    {% endblock %}
+
+</body>
+</html>
