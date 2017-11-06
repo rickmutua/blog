@@ -15,14 +15,14 @@
                 <li style="...">
 
                     <h2>
-                        <a href="{{ url_for('main.single_blog, id = blog.id)}}">
+                        <a href="{{ url_for('main.single_blog, id = blog.id')}}">
                             {{ blog.title }}
                         </a>
                     </h2>
 
                     <br>
 
-                    <p> {{ blog.blog }}</p>
+                    <p> {{ blog.description }}</p>
 
                 </li>
 

@@ -36,8 +36,8 @@ class Blog(db.Model):
 
     @classmethod
     def get_blog(cls, id):
-        blog = Blog.query.filter_by(blog_id=id).all()
-        return blog
+        blogs = Blog.query.all()
+        return blogs
 
 
 class Review(db.Model):

@@ -15,7 +15,7 @@
 
     {% block styles%}
         {{ super() }}
-            <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+            <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
     {% endblock %}
 
 
@@ -30,7 +30,9 @@
         <div class="row">
 
             <ul style="...">
-                {{ macro displayBlogList (blogs) }}
+                {{ macro.displayBlogList (blogs) }}
             </ul>
+
         </div>
+
     </div>
