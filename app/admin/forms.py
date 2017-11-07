@@ -19,3 +19,18 @@ class ReviewForm(FlaskForm):
     review = TextAreaField('Pitch Review')
 
     submit = SubmitField('Submit')
+
+
+class EditBlog(FlaskForm):
+
+    submit = SubmitField('Edit Blog')
+
+
+class DeleteBlog(FlaskForm):
+
+    submit = SubmitField('Delete Blog')
+
+
+class DeleteComment(FlaskForm):
+
+    submit = SubmitField('Delete Comment')
