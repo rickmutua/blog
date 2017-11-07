@@ -75,6 +75,30 @@
 
             <hr>
 
+            {% if current_user.id = 1 %}
+
+                <form action="{{ url_for('admin.delete_blog', id = blog.id) }}" method=post class=delete-entry>
+
+                    <input type="hidden" name="blog_id" value="{{blog.id}}" />
+
+                    <input class="btn btn-danger" type="submit" value="Delete Blog" />
+
+                </form>
+
+                <form action="{{ url_for('admin.edit_blog', id = blog.id) }}" method=post class=edit-entry>
+
+                    <input type="hidden" name="blog_id" value="{{blog.id}}" />
+
+                    <input class="btn btn-danger" type="submit" value="Edit Blog" />
+
+                </form>
+
+           {% else %}
+
+           {% endif %}
+
+            <hr>
+
 
             {% block content %}
 

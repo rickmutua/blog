@@ -52,28 +52,6 @@ def profile(uname):
     return render_template("profile/profile.html", user = user)
 
 
-@admin.route('/blog/new', methods=['GET', 'POST'])
-def new_blog():
-
-    form = BlogForm()
-
-    if form.validate_on_submit():
-
-        title = form.title.data
-
-        description = form.description.data
-
-        blog = form.blog.data
-
-        new_blog = Blog(blog=blog, title=title, description=description)
-
-        new_blog.save_blog()
-
-        return redirect(url_for('.index'))
-
-    return render_template('new_blog.html', blog_form=form)
-
-
 @main.route('/blog/review/new/<int:id>', methods=['GET', 'POST'])
 def new_review(id):
 
@@ -95,28 +73,4 @@ def new_review(id):
         return redirect(url_for('.single_blog', id=blog.id))
 
     return render_template('blog.html', review_form=form, blog=blog)
-
-
-@admin.route('delete/blog/<int:id>', methods=['GET', 'POST'])
-def delete_blog(id):
-
-    blog = Blog.delete_blog(id)
-
-    return redirect(url_for('.index'))
-
-
-@admin.route('delete/review/<int:id>', methods=['GET', 'POST'])
-def delete_review(id):
-
-    review = Review.delete_blog(id)
-
-    return redirect(url_for('.single_blog'))
-
-
-@admin.route('edit/blog/<int:id>', methods=['GET', 'POST'])
-def edit_blog(id):
-
-    edit = Review.delete_blog(id)
-
-    return redirect(url_for('.single_blog'))
 
