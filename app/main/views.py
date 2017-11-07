@@ -2,12 +2,23 @@ from flask import render_template, redirect, request, url_for, abort
 from flask_login import login_required, current_user
 
 from . import main
-from .forms import ReviewForm
+from ..admin import admin
+from .forms import ReviewForm, BlogForm, EditBlog, DeleteBlog, DeleteComment
 from ..models import Blog, Review, User
 from .. import db
 
 
-@main.route('/admin')
+@main.route('/')
+@login_required
+
+def index():
+
+    blogs = Blog.get_blog(id)
+
+    return render_template('index.html', blogs=blogs)
+
+
+@admin.route('/dashboard')
 @login_required
 
 def check_user():
@@ -16,13 +27,6 @@ def check_user():
         abort(403)
 
     return render_template('admin/dashboard.html')
-
-
-def index():
-
-    blogs = Blog.get_blog(id)
-
-    return render_template('index.html', blogs=blogs)
 
 
 @main.route('/blog/<int:id>')
@@ -48,7 +52,7 @@ def profile(uname):
     return render_template("profile/profile.html", user = user)
 
 
-@main.route('/blog/new', methods=['GET', 'POST'])
+@admin.route('/blog/new', methods=['GET', 'POST'])
 def new_blog():
 
     form = BlogForm()
@@ -90,4 +94,29 @@ def new_review(id):
 
         return redirect(url_for('.single_blog', id=blog.id))
 
-    return render_template('new_review.html', review_form=form, blog=blog)
+    return render_template('blog.html', review_form=form, blog=blog)
+
+
+@admin.route('delete/blog/<int:id>', methods=['GET', 'POST'])
+def delete_blog(id):
+
+    blog = Blog.delete_blog(id)
+
+    return redirect(url_for('.index'))
+
+
+@admin.route('delete/review/<int:id>', methods=['GET', 'POST'])
+def delete_review(id):
+
+    review = Review.delete_blog(id)
+
+    return redirect(url_for('.single_blog'))
+
+
+@admin.route('edit/blog/<int:id>', methods=['GET', 'POST'])
+def edit_blog(id):
+
+    edit = Review.delete_blog(id)
+
+    return redirect(url_for('.single_blog'))
+
