@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 
 
@@ -10,6 +13,21 @@
 <body>
 
 
+    {% block content %}
+
+        <div class="container">
+
+            <div class="row">
+
+                {{ wtf.quick_form(review_form) }}
+
+                {{ simplemde.load }}
+
+            </div>
+
+        </div>
+
+    {% endblock %}
 
 
 </body>

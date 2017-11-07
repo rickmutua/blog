@@ -8,9 +8,9 @@ from ..models import Blog, Review, User
 from .. import db
 
 
+
 @main.route('/')
 @login_required
-
 def index():
 
     blogs = Blog.get_blog(id)

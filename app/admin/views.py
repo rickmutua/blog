@@ -26,16 +26,14 @@ def new_blog():
     if form.validate_on_submit():
 
         title = form.title.data
-
         description = form.description.data
-
         blog = form.blog.data
 
         new_blog = Blog(blog=blog, title=title, description=description)
 
         new_blog.save_blog()
 
-        return redirect(url_for('.index'))
+        return redirect(url_for('main.index'))
 
     return render_template('new_blog.html', blog_form=form)
 
@@ -45,7 +43,7 @@ def delete_blog(id):
 
     blog = Blog.delete_blog(id)
 
-    return redirect(url_for('.index'))
+    return redirect(url_for('main.index'))
 
 
 @admin.route('/delete/review/<int:id>', methods=['GET', 'POST'])

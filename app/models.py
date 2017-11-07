@@ -39,6 +39,19 @@ class Blog(db.Model):
         blogs = Blog.query.all()
         return blogs
 
+    @classmethod
+    def delete_blog(self, blog_id):
+        reviews = Review.query.filter_by(blog_id=blog_id).delete()
+        blog = Blog.query.filter_by(id=blog_id).delete()
+        db.session.commit()
+
+    @classmethod
+    def edit_blog(self, blog_id):
+
+        blog = Review.query.filter_by(id=blog_id).edit()
+
+        db.session.commit()
+
 
 class Review(db.Model):
 
@@ -61,6 +74,13 @@ class Review(db.Model):
     def get_reviews(cls, id):
         reviews = Review.query.filter_by(blog_id=id).all()
         return reviews
+
+    @classmethod
+    def delete_review(self, review_id):
+
+        review = Review.query.filter_by(id=review_id).delete()
+
+        db.session.commit()
 
 
 class User(UserMixin, db.Model):
