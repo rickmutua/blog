@@ -17,7 +17,6 @@ def index():
 
     return render_template('index.html', blogs=blogs)
 
-
 @admin.route('/dashboard')
 @login_required
 
@@ -66,7 +65,7 @@ def new_review(id):
 
         review = form.review.data
 
-        new_review = Review(review=review, user=current_user)
+        new_review = Review(review=review, user_id=current_user.id, blog_id=blog.id)
 
         new_review.save_review()
 

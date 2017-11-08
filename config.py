@@ -1,10 +1,19 @@
 import os
 
+
 class Config:
+    '''
+    General configuration parent class
+    '''
 
     SECRET_KEY = os.environ.get('SECRET_KEY')
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+
+    # simple mde  configurations
+    SIMPLEMDE_JS_IIFE = True
+    SIMPLEMDE_USE_CDN = True
 
     @staticmethod
     def init_app(app):
@@ -12,15 +21,29 @@ class Config:
 
 
 class ProdConfig(Config):
+    '''
+    Production  configuration child class
 
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    Args:
+        Config: The parent configuration class with General configuration settings
+    '''
+
+    # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    pass
+
 
 
 class DevConfig(Config):
+    '''
+    Development  configuration child class
+
+    Args:
+        Config: The parent configuration class with General configuration settings
+    '''
 
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://erick:qwerty12345@localhost/blog'
 
-    Debug = True
+    DEBUG = True
 
 
 config_options = {
