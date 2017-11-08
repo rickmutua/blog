@@ -71,5 +71,5 @@ def new_review(id):
 
         return redirect(url_for('.single_blog', id=blog.id))
 
-    return render_template('blog.html', review_form=form, blog=blog)
+    return render_template('new_review.html', review_form=form, blog=blog)
 

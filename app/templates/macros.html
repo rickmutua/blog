@@ -12,19 +12,25 @@
 
             <div class="container">
 
-                <li style="...">
+                <div class="row">
 
-                    <h2>
-                        <a href="{{url_for('main.single_blog', id = blog.id)}}">
-                            {{ blog.title }}
-                        </a>
-                    </h2>
+                    <li style="list-style-type: none;">
 
-                    <br>
+                        <h2>
+                            <a href="{{url_for('main.single_blog', id = blog.id)}}">
+                                {{ blog.title }}
+                            </a>
+                        </h2>
 
-                    <p> {{ blog.description }}</p>
+                        <br>
 
-                </li>
+                            <p style="margin-left: 30px;"> {{ blog.description }}</p>
+
+                        <hr>
+
+                    </li>
+
+                </div>
 
             </div>
 
