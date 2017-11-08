@@ -4,9 +4,9 @@ from flask_migrate import MigrateCommand, Migrate
 from app.models import Blog, User, Review, Role
 
 
-app = create_app('development')
+# app = create_app('development')
 
- # app = create_app('production')
+app = create_app('production')
 
 
 manager = Manager(app)
